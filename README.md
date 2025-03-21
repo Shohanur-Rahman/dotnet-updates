@@ -45,3 +45,17 @@ public class PersonService(IMyService myService)
 }
 
 ```
+
+### DateOnly in .NET 6
+In .NET 6, the DateOnly type was introduced as a new type to represent a date without a time component. This type is useful when you want to work with just the date part (year, month, day) and avoid dealing with the time (hours, minutes, seconds).
+
+```
+DateOnly date = new DateOnly(2023, 3, 21); // Year, Month, Day
+Console.WriteLine(date); // Output: 2023-03-21
+```
+
+```
+DateTime dateTime = DateTime.Now; // Current DateTime (includes time)
+DateOnly dateFromDateTime = DateOnly.FromDateTime(dateTime);
+Console.WriteLine(dateFromDateTime); // Output: Only the date part (e.g., 2025-03-21)
+```
