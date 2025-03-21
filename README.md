@@ -29,3 +29,19 @@ public class MyController(IMyService myService) : ControllerBase
 }
 
 ```
+
+###### Dependency Injection in console application
+
+```
+public class PersonService(IMyService myService)
+{
+    private readonly IMyService _myService = myService;
+
+    public void Serve()
+    {
+        _myService.DoWork();
+        Console.WriteLine("Person service is serving...");
+    }
+}
+
+```
