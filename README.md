@@ -59,3 +59,15 @@ DateTime dateTime = DateTime.Now; // Current DateTime (includes time)
 DateOnly dateFromDateTime = DateOnly.FromDateTime(dateTime);
 Console.WriteLine(dateFromDateTime); // Output: Only the date part (e.g., 2025-03-21)
 ```
+
+### Numerical StringComparer coming in .NET 10
+In .NET 10, a new feature is being introduced that includes a Numerical StringComparer. This feature aims to provide a way to compare strings that represent numbers in a more intuitive, numeric way rather than lexicographically. In most programming languages, strings are compared lexicographically, meaning each character in a string is compared based on its Unicode value. For example, comparing numeric strings like "10" and "2" lexicographically would result in "10" being considered less than "2" because the character '1' in "10" is smaller than '2' in "2". However, this is not how we would normally expect numbers to be compared.
+
+```
+List<string> numberStrings = new List<string> { "10", "2", "100", "11" };
+numberStrings.Sort(NumericalStringComparer.Ordinal);
+foreach (var item in numberStrings)
+{
+    Console.WriteLine(item);  // Output: 2, 10, 11, 100
+}
+```
